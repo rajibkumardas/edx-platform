@@ -827,7 +827,7 @@ def storage_service_bucket(course_key):
     # set since behind the scenes it fires a HEAD request that is equivalent to get_all_keys()
     # meaning it would need ListObjects on the whole bucket, not just the path used in each
     # environment (since we share a single bucket for multiple deployments in some configurations)
-    if waffle_flags()[ENABLE_VEM_PIPELINE].is_enabled(course_key):
+    if course_key and waffle_flags()[ENABLE_VEM_PIPELINE].is_enabled(course_key):
         return conn.get_bucket(settings.VIDEO_UPLOAD_PIPELINE['VEM_S3_BUCKET'], validate=False)
     else:
         return conn.get_bucket(settings.VIDEO_UPLOAD_PIPELINE['BUCKET'], validate=False)

@@ -226,7 +226,7 @@ class VideoUploadTestMixin(VideoUploadTestBase):
 @ddt.ddt
 @patch.dict("django.conf.settings.FEATURES", {"ENABLE_VIDEO_UPLOAD_PIPELINE": True})
 @override_settings(VIDEO_UPLOAD_PIPELINE={
-    "VEM_S3_BUCKET": "vem_test_bucket","BUCKET": "test_bucket", "ROOT_PATH": "test_root"
+    "VEM_S3_BUCKET": "vem_test_bucket", "BUCKET": "test_bucket", "ROOT_PATH": "test_root"
 })
 class VideosHandlerTestCase(VideoUploadTestMixin, CourseTestCase):
     """Test cases for the main video upload endpoint"""
